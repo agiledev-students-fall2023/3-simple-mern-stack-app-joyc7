@@ -22,6 +22,21 @@ mongoose
 const { Message } = require('./models/Message')
 const { User } = require('./models/User')
 
+app.get('/aboutus', async (req, res) => {
+  try {
+    res.json({
+      paragraph: "My name is Jiayi Chen, and you can also call me by my English name Joy. I'm a junior student majoring in data science and computer science at New York University. I was born in a city near the southeast coast of China named Wenzhou, but I only lived there for the first ten years of my life. During primary school, I moved with my family to Shanghai and moved again to Hangzhou when I went to high school, and now I’m in New York. Being in New York has encouraged me to develop new interests in cooking, and watching musicals. ", 
+      photo: "https://drive.google.com/uc?id=181cIVEpnig3_FCoHVV09ES1gWZ59rIE7", 
+    })
+  } catch (err) {
+    console.error(err)
+    res.status(400).json({
+      error: err, 
+      status: 'failed to load content'
+    })
+  }
+})
+
 // a route to handle fetching all messages
 app.get('/messages', async (req, res) => {
   // load all messages from database
